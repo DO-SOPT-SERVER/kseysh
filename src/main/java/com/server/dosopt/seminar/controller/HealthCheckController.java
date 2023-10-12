@@ -20,7 +20,6 @@ public class HealthCheckController {
         response.put("status","OK");
         response.put("stat","NO"); // HashMap은 중복 key 값이 발생했을 시 key의 value값을 덮어씌운다!
         return response;
-
     }
 
     @GetMapping("/v2")
@@ -32,6 +31,8 @@ public class HealthCheckController {
     // ResponseEntity.ok()는 HTTP 200 OK 상태 코드를 반환한다.
     // ResponseEntity.notFound()는 HTTP 404 NOT Found 상태를 반환한다.
     // header() 메소드를 통해 특정 헤더 값도 설정이 가능하다.
+
+
     @GetMapping("/v3")
     public String healthCheckV3(){
         return "OK";
