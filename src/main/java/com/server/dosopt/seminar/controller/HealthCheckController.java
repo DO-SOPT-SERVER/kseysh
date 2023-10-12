@@ -20,6 +20,7 @@ public class HealthCheckController {
         response.put("status","OK");
         response.put("stat","NO"); // HashMap은 중복 key 값이 발생했을 시 key의 value값을 덮어씌운다!
         return response;
+
     }
 
     @GetMapping("/v2")
