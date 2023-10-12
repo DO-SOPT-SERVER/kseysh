@@ -41,7 +41,7 @@ public class HealthCheckController {
     @GetMapping("/v4")
     public ResponseEntity<Map<String,String>>  healthCheckv4(){
         Map<String, String> response = new HashMap<>();
-        response.put("status","ok");
+        response.put("status","OK");
         return ResponseEntity.ok(response);
     }
     // ResponseEntity는 public class ResponseEntity<T> extends HttpEntity<T>로 되어 있으며,
