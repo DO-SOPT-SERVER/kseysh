@@ -31,6 +31,8 @@ public class HealthCheckController {
     // ResponseEntity.ok()는 HTTP 200 OK 상태 코드를 반환한다.
     // ResponseEntity.notFound()는 HTTP 404 NOT Found 상태를 반환한다.
     // header() 메소드를 통해 특정 헤더 값도 설정이 가능하다.
+
+
     @GetMapping("/v3")
     public String healthCheckV3(){
         return "OK";
@@ -39,7 +41,7 @@ public class HealthCheckController {
     @GetMapping("/v4")
     public ResponseEntity<Map<String,String>>  healthCheckv4(){
         Map<String, String> response = new HashMap<>();
-        response.put("status","ok");
+        response.put("status","OK");
         return ResponseEntity.ok(response);
     }
     // ResponseEntity는 public class ResponseEntity<T> extends HttpEntity<T>로 되어 있으며,
