@@ -1,6 +1,6 @@
 package com.server.dosopt.seminar.controller;
 
-import com.server.dosopt.seminar.dto.HealthCheckResponse;
+import com.server.dosopt.seminar.controller.dto.HealthCheckResponse;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.http.ResponseEntity;

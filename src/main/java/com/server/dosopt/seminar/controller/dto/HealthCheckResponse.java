@@ -1,4 +1,4 @@
-package com.server.dosopt.seminar.dto;
+package com.server.dosopt.seminar.controller.dto;
 
 import lombok.Getter;
 
