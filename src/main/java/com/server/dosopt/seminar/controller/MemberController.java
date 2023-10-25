@@ -26,7 +26,6 @@ public class MemberController {
     private final MemberService memberService;
 
 
-    // 특정 사용자 정보 단건 조회 V1
     @GetMapping("/{memberId}")
     public ResponseEntity<MemberGetResponse> getMemberProfileV1(@PathVariable Long memberId) {
         return ResponseEntity.ok(memberService.getMemberByIdV2(memberId));
@@ -34,6 +33,8 @@ public class MemberController {
 
     // 특정 사용자 정보 단건 조회 V2
     @GetMapping(value = "/{memberId}/v2", consumes = "application/json", produces = MediaType.APPLICATION_JSON_VALUE)
+    // consumes를 이용하여 요청 미디어 타입을 설정
+    // produces를 이용하여 응답 미디어 타입을 설정
     public ResponseEntity<MemberGetResponse> getMemberProfileV2(@PathVariable Long memberId) {
         return ResponseEntity.ok(memberService.getMemberByIdV2(memberId));
     }
@@ -41,7 +42,10 @@ public class MemberController {
     // 생성
     @PostMapping
     public ResponseEntity<Void> createMember(@RequestBody MemberCreateRequest request) {
+        //@RequestBody 어노테이션을 이용하여 MemberCreateRequest 객체로 변환하고 이 객체를 사용해 새로운  Member 객체를 생성한다.
         URI location =  URI.create(memberService.create(request));
+        // URI 객체를 생성하여 ResponseEntity.create(location)을 통해 반환하면,
+        // 새로 생성된 자원의 위치를 location 헤더에서 얻을 수 있게 된다.
         return ResponseEntity.created(location).build();
     }
 
