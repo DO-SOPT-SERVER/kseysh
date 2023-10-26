@@ -6,10 +6,15 @@ import com.server.dosopt.seminar.controller.dto.response.MemberGetResponse;
 import com.server.dosopt.seminar.domain.Member;
 import com.server.dosopt.seminar.domain.SOPT;
 import com.server.dosopt.seminar.domain.repository.MemberJpaRepository;
+
 import jakarta.persistence.EntityNotFoundException;
+
 import java.util.List;
+
 import java.util.stream.Collectors;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
