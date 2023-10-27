@@ -3,10 +3,10 @@ spring:
       activate:
           on-profile: local
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/test
-    username: sa
-    password:
+    driver-class-name: DB드라이버
+    url: jdbc:postgresql://localhost:3306/postgres
+    username: root
+    password: 0000
 
   jpa:
     show-sql: true
