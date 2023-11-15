@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED) // 엔티티는 JPA 스펙상 기본생성자가 필요하다.
 public class Member extends BaseTimeEntity{
 
     @Id
@@ -26,7 +26,7 @@ public class Member extends BaseTimeEntity{
     private String nickname;
     private int age;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)//cascadeType을 통해
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)// 연관된 엔티티에 대한 모든 변경 작업이 부모 엔티티에 전파되도록 한다.
     private final List<Post> posts = new ArrayList<>();
 
     @Builder

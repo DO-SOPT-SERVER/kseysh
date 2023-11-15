@@ -26,14 +26,18 @@ public class Post extends BaseTimeEntity{
 
     private String title;
     @Column(columnDefinition = "TEXT")
-    // 이렇게 바꾸면 varchar가 아닌 TEXT로 적용된다. content는 긴 글이므로!
+    // 이렇게 바꾸면 varchar가 아닌 TEXT로 적용된다. content는 긴 글이므로 TEXT로 바꾸어주는 것이 더 적합하다.
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // 사람 하나가 여러 post를 가질 수 있으므로, 지연로딩이므로
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // 사람 하나가 여러 post를 가질 수 있으므로, XToOne은 다 지연로딩으로 바꿔준다.
     @JoinColumn(name = "member_id")
     private Member member;
     // Long member_id 처럼 적는 것이 아닌 멤버 객체를 명시해주고, JoinColumn으로 명시를 해준다.
 //    private CategoryId categoryId;
+
+    // @ManyToOne 사용을 하지 않고 논리적으로 관계만 맺어둔다.
+    @Column(name = "category_id")
+    private CategoryId categoryId;
 
     @Builder
     public Post(String title, String content, Member member){

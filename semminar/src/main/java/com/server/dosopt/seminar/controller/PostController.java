@@ -2,7 +2,7 @@ package com.server.dosopt.seminar.controller;
 
 import com.server.dosopt.seminar.controller.dto.request.post.PostCreateRequest;
 import com.server.dosopt.seminar.controller.dto.response.PostGetResponse;
-import com.server.dosopt.seminar.controller.dto.response.PostUpdateRequest;
+import com.server.dosopt.seminar.controller.dto.request.post.PostUpdateRequest;
 import com.server.dosopt.seminar.service.PostService;
 import java.net.URI;
 import java.util.List;
