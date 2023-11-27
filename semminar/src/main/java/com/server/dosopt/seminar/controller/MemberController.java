@@ -1,7 +1,7 @@
 package com.server.dosopt.seminar.controller;
 
-import com.server.dosopt.seminar.controller.dto.request.MemberCreateRequest;
-import com.server.dosopt.seminar.controller.dto.request.MemberProfileUpdateRequest;
+import com.server.dosopt.seminar.controller.dto.request.member.MemberCreateRequest;
+import com.server.dosopt.seminar.controller.dto.request.member.MemberProfileUpdateRequest;
 import com.server.dosopt.seminar.controller.dto.response.MemberGetResponse;
 import com.server.dosopt.seminar.service.MemberService;
 
@@ -64,7 +64,6 @@ public class MemberController {
     @PatchMapping("/{memberId}")
     public ResponseEntity<Void> updateMemberSoptInfo(@PathVariable Long memberId,
                                                      @RequestBody MemberProfileUpdateRequest request) {
-        memberService.updateSOPT(memberId, request);
         return ResponseEntity.noContent().build();
     }
 
