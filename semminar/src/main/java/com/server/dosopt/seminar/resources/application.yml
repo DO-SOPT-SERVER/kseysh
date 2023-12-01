@@ -1,18 +1,35 @@
 spring:
-  config:
-      activate:
-          on-profile: local
   datasource:
-    driver-class-name: DB드라이버
-    url: jdbc:postgresql://localhost:3306/postgres
-    username: root
-    password: 0000
-
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/jpashop
+    username: sa
+    password:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 3MB # multipart file 하나의 size 결정
+      max-request-size: 5MB # 전체 HTTP 요청의 SIZE결정
+  config:
+    import: aws-property.properties
   jpa:
+    defer-datasource-initialization: true
     show-sql: true
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
         format_sql: true
-        show_sql: true
+        show_sql: trued
+  aws-property:
+    access-key: ${aws-property.access-key}
+    secret-key: ${aws-property.secret-key}
+    aws-region: ${aws-property.aws-region}
+    s3-bucket-name: do-sopt-test-seminar-bucket
+
+jwt:
+  secret: ${aws-property.jwt-secret}
+
+  sql:
+    init:
+      mode: always
+

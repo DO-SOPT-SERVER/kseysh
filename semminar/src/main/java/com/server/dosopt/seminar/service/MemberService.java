@@ -1,10 +1,8 @@
 package com.server.dosopt.seminar.service;
 
-import com.server.dosopt.seminar.controller.dto.request.MemberCreateRequest;
-import com.server.dosopt.seminar.controller.dto.request.MemberProfileUpdateRequest;
+import com.server.dosopt.seminar.controller.dto.request.member.MemberCreateRequest;
 import com.server.dosopt.seminar.controller.dto.response.MemberGetResponse;
 import com.server.dosopt.seminar.domain.Member;
-import com.server.dosopt.seminar.domain.SOPT;
 import com.server.dosopt.seminar.domain.repository.MemberJpaRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -55,16 +53,11 @@ public class MemberService {
             .name(request.name())
             .nickname(request.nickname())
             .age(request.age())
-            .sopt(request.sopt())
             .build());// 최종적으로 Member 객체 생성
         return member.getId().toString();
     }
 
-    @Transactional
-    public void updateSOPT(Long memberId, MemberProfileUpdateRequest request) {
-        Member member = memberJpaRepository.findByIdOrThrow(memberId);
-        member.updateSOPT(new SOPT(request.generation(), request.part()));
-    }
+
 
     @Transactional
     public void deleteMember(Long memberId) {
