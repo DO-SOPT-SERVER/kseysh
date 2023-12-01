@@ -20,14 +20,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Table(name = "post")
-public class Post extends BaseTimeEntity{
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Post extends BaseTimeEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
     @Column(columnDefinition = "TEXT")
     // 이렇게 바꾸면 varchar가 아닌 TEXT로 적용된다. content는 긴 글이므로 TEXT로 바꾸어주는 것이 더 적합하다.
     private String content;
+
+    private String imageUrl;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // 사람 하나가 여러 post를 가질 수 있으므로, XToOne은 다 지연로딩으로 바꿔준다.
     @JoinColumn(name = "member_id")
@@ -40,9 +43,19 @@ public class Post extends BaseTimeEntity{
     private CategoryId categoryId;
 
     @Builder
-    public Post(String title, String content, Member member){
+    public Post(String title, String content, Member member) {
         this.title = title;
         this.content = content;
+        this.member = member;
+    }
+
+    @Builder(builderMethodName = "builderWithImageUrl")
+    // @Builder를 생성자 2개에 적용하게 되면 builder를 사용할 때 적용되지 않을 수 있으므로
+    // builderMethodName option을 추가하여 사용한다.
+    public Post(String title, String content, String imageUrl, Member member) {
+        this.title = title;
+        this.content = content;
+        this.imageUrl = imageUrl;
         this.member = member;
     }
 
